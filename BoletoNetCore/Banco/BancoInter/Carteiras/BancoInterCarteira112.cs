@@ -41,7 +41,7 @@ namespace BoletoNetCore
         public string FormataCodigoBarraCampoLivre(Boleto boleto)
         {
             var contaBancaria = boleto.Banco.Beneficiario.ContaBancaria;
-            return $"{contaBancaria.Agencia}{boleto.Carteira}{contaBancaria.OperacaoConta}{boleto.NossoNumero}";
+            return $"{contaBancaria.Agencia}{boleto.Carteira}{boleto.Banco.Beneficiario.CodigoTransmissao}{boleto.NossoNumero}";
         }
     }
 }
