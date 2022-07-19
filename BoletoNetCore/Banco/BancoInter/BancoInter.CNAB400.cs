@@ -128,7 +128,7 @@ namespace BoletoNetCore
                     reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0066, 001, 0, "2", '0');
                     reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0067, 013, 2, 0, '0');
                     reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0080, 004, 2, boleto.PercentualMulta, '0');
-                    reg.Adicionar(TTiposDadoEDI.ediDataDDMMAA___________, 0084, 006, 0, boleto.DataVencimento, ' ');
+                    reg.Adicionar(TTiposDadoEDI.ediDataDDMMAA___________, 0084, 006, 0, boleto.DataVencimento.AddDays(1), ' ');
                 }
                 else
                 {
@@ -139,7 +139,7 @@ namespace BoletoNetCore
                 }
 
 
-                reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0090, 011, 0, boleto.NossoNumero, '0');
+                reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0090, 011, 0, 0, '0');
                 reg.Adicionar(TTiposDadoEDI.ediAlphaAliEsquerda_____, 0101, 008, 0, Empty, ' ');
                 reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0109, 002, 0, "01", '0');
                 //reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0082, 001, 0, boleto.NossoNumeroDV, '0');
@@ -180,7 +180,7 @@ namespace BoletoNetCore
                     reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0160, 001, 0, "2", '0');
                     reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0161, 013, 2, "0", '0');
                     reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0174, 004, 2, boleto.PercentualJurosDia, '0');
-                    reg.Adicionar(TTiposDadoEDI.ediDataDDMMAA___________, 0178, 006, 0, boleto.DataVencimento, ' ');
+                    reg.Adicionar(TTiposDadoEDI.ediDataDDMMAA___________, 0178, 006, 0, boleto.DataVencimento.AddDays(1), ' ');
                 }
                 else
                 {
@@ -288,7 +288,7 @@ namespace BoletoNetCore
                 numeroRegistroGeral++;
                 var reg = new TRegistroEDI();
                 reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0001, 001, 0, "9", '0');
-                reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0002, 006, 0, numeroRegistroGeral, '0');
+                //reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0002, 006, 0, numeroRegistroGeral, '0');
                 reg.Adicionar(TTiposDadoEDI.ediAlphaAliEsquerda_____, 0002, 393, 0, Empty, ' ');
                 reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0395, 006, 0, numeroRegistroGeral, '0');
                 reg.CodificarLinha();

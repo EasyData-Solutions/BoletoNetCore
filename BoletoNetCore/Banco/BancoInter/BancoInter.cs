@@ -19,7 +19,7 @@ namespace BoletoNetCore
 
         public override string FormatarNomeArquivoRemessa(int numeroSequencial)
         {
-            return $"CI400_001_{numeroSequencial.ToString().PadLeft(7, '0').Right(2)}.rem";
+            return $"CI400_001_{numeroSequencial.ToString("0000000")}.rem";
         }
 
         public void FormataBeneficiario()
@@ -29,7 +29,7 @@ namespace BoletoNetCore
             if (!CarteiraFactory<BancoInter>.CarteiraEstaImplementada(contaBancaria.CarteiraComVariacaoPadrao))
                 throw BoletoNetCoreException.CarteiraNaoImplementada(contaBancaria.CarteiraComVariacaoPadrao);
 
-            contaBancaria.FormatarDados("PAGÁVEL EM QUALQUER BANCO.", "", "", 7);
+            contaBancaria.FormatarDados("PAGÁVEL EM QUALQUER BANCO.", "", "", 10);
 
             var codigoBeneficiario = Beneficiario.Codigo;
             Beneficiario.Codigo = codigoBeneficiario.Length <= 20 ? codigoBeneficiario.PadLeft(20, '0') : throw BoletoNetCoreException.CodigoBeneficiarioInvalido(codigoBeneficiario, 20);

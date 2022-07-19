@@ -6,7 +6,7 @@
     <OutputType>Library</OutputType>
     <StartupObject />
     <IsPackable>true</IsPackable>
-    <Version>3.1.4</Version>
+    <Version>3.1.9</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyVersion>3.0.2.0</AssemblyVersion>
     <PackageId>EasyData.Boleto</PackageId>
