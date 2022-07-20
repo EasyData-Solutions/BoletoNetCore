@@ -49,7 +49,7 @@ namespace BoletoNetCore
                 boleto.ValorTitulo = Convert.ToDecimal(registro.Substring(124, 13)) / 100;
                 boleto.ValorPago = Convert.ToDecimal(registro.Substring(159, 13)) / 100;
                 //boleto.ValorTarifas = Convert.ToDecimal(registro.Substring(175, 13)) / 100;
-                boleto.ValorOutrasDespesas = boleto.ValorTitulo - boleto.ValorPago;
+                boleto.ValorOutrasDespesas = boleto.ValorPago > 0 ? boleto.ValorTitulo - boleto.ValorPago : 0;
                 //boleto.ValorIOF = Convert.ToDecimal(registro.Substring(214, 13)) / 100;
                 //boleto.ValorAbatimento = Convert.ToDecimal(registro.Substring(227, 13)) / 100;
                 //boleto.ValorDesconto = Convert.ToDecimal(registro.Substring(240, 13)) / 100;
