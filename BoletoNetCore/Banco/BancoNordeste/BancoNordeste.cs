@@ -20,5 +20,10 @@ namespace BoletoNetCore
         public void FormataBeneficiario()
         {
         }
+
+        public override string FormatarNomeArquivoRemessa(int numeroSequencial)
+        {
+            return $"CB{DateTime.Now.Date.Day:00}{DateTime.Now.Date.Month:00}{numeroSequencial.ToString().PadLeft(9, '0').Right(2)}.rem";
+        }
     }
 }

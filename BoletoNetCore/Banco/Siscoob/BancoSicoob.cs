@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BoletoNetCore.Exceptions;
+using BoletoNetCore.Extensions;
 using static System.String;
 
 namespace BoletoNetCore
@@ -36,8 +37,7 @@ namespace BoletoNetCore
 
         public override string FormatarNomeArquivoRemessa(int numeroSequencial)
         {
-            return numeroSequencial.ToString();
+            return $"SICOOB_{DateTime.Now.Date.Day:00}{DateTime.Now.Date.Month:00}{DateTime.Now.Date.Year:0000}{DateTime.Now.Hour:00}{DateTime.Now.Minute:00}{DateTime.Now.Second:00}{numeroSequencial.ToString().PadLeft(9, '0').Right(2)}.rem";
         }
-
     }
 }
