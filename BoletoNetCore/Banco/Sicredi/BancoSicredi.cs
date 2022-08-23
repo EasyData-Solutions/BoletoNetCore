@@ -22,7 +22,7 @@ namespace BoletoNetCore
             if (!CarteiraFactory<BancoSicredi>.CarteiraEstaImplementada(contaBancaria.CarteiraComVariacaoPadrao))
                 throw BoletoNetCoreException.CarteiraNaoImplementada(contaBancaria.CarteiraComVariacaoPadrao);
 
-            contaBancaria.FormatarDados("PAGÁVEL EM QUALQUER BANCO ATÉ O VENCIMENTO.", "", "", 9);
+            contaBancaria.FormatarDados("PAGÁVEL EM QUALQUER BANCO.", "", "", 9);
 
             Beneficiario.CodigoFormatado = $"{contaBancaria.Agencia}.{contaBancaria.OperacaoConta}.{Beneficiario.Codigo}";
         }

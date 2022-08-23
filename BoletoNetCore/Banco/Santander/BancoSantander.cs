@@ -24,7 +24,7 @@ namespace BoletoNetCore
             if (!CarteiraFactory<BancoSantander>.CarteiraEstaImplementada(contaBancaria.CarteiraComVariacaoPadrao))
                 throw BoletoNetCoreException.CarteiraNaoImplementada(contaBancaria.CarteiraComVariacaoPadrao);
 
-            contaBancaria.FormatarDados("PAGÁVEL PREFERENCIALMENTE NO BANCO SANTANDER.", "", "", digitosConta: 9);
+            contaBancaria.FormatarDados("PAGÁVEL EM QUALQUER BANCO.", "", "", digitosConta: 9);
 
             if (contaBancaria.CarteiraComVariacaoPadrao != "1")
             {
