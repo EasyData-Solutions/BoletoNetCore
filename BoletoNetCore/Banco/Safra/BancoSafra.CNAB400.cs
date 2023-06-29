@@ -30,6 +30,13 @@ namespace BoletoNetCore
         {
             try
             {
+                //Dados da conta beneficiario
+                boleto.Banco.Beneficiario.ContaBancaria.Agencia = registro.Substring(17, 4);
+                boleto.Banco.Beneficiario.ContaBancaria.DigitoAgencia = registro.Substring(21, 1);
+                boleto.Banco.Beneficiario.ContaBancaria.Conta = registro.Substring(22, 8);
+                boleto.Banco.Beneficiario.ContaBancaria.DigitoConta = registro.Substring(30, 1);
+
+
                 //Nº Controle do Participante
                 boleto.NumeroControleParticipante = registro.Substring(37, 25);
 
