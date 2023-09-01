@@ -322,6 +322,15 @@ namespace BoletoNetCore
                     throw new Exception("O arquivo não é do tipo \"02RETORNO01COBRANCA\"");
                 if (registro.Substring(76, 11) != "041BANRISUL")
                     throw new Exception("O arquivo não é do tipo \"041BANRISUL\"");
+
+                this.Beneficiario = new Beneficiario();
+                this.Beneficiario.ContaBancaria = new ContaBancaria();
+
+                this.Beneficiario.ContaBancaria.Agencia = registro.Substring(26, 4);
+                this.Beneficiario.ContaBancaria.Conta = registro.Substring(32, 5);
+                this.Beneficiario.ContaBancaria.DigitoConta = registro.Substring(37, 1);
+                this.Beneficiario.Nome = registro.Substring(46, 30).Trim();
+
             }
             catch (Exception ex)
             {
