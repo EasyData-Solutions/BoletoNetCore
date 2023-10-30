@@ -19,6 +19,17 @@ namespace BoletoNetCore
 
         public void FormataBeneficiario()
         {
+            var contaBancaria = Beneficiario.ContaBancaria;
+
+            if (!CarteiraFactory<BancoNordeste>.CarteiraEstaImplementada(contaBancaria.CarteiraComVariacaoPadrao))
+                throw BoletoNetCoreException.CarteiraNaoImplementada(contaBancaria.CarteiraComVariacaoPadrao);
+
+            contaBancaria.FormatarDados("PAGÁVEL EM QUALQUER BANCO.", "", "", 7);
+
+            var codigoBeneficiario = Beneficiario.Codigo;
+            Beneficiario.Codigo = codigoBeneficiario.Length <= 10 ? codigoBeneficiario.PadLeft(10, '0') : throw BoletoNetCoreException.CodigoBeneficiarioInvalido(codigoBeneficiario, 10);
+
+            Beneficiario.CodigoFormatado = $"{contaBancaria.Agencia} / {contaBancaria.Conta}-{contaBancaria.DigitoConta}";
         }
 
         public override string FormatarNomeArquivoRemessa(int numeroSequencial)
