@@ -33,6 +33,7 @@ namespace BoletoNetCore
                 if (boleto.NossoNumero.Length > 7)
                     throw new Exception($"Nosso Número ({boleto.NossoNumero}) deve conter 7 dígitos.");
                 boleto.NossoNumero = boleto.NossoNumero.PadLeft(7, '0');
+
                 boleto.NossoNumeroDV = boleto.NossoNumero.CalcularDVNordeste();
                 boleto.NossoNumeroFormatado = $"{boleto.NossoNumero}-{boleto.NossoNumeroDV}/{boleto.Banco.Beneficiario.CodigoTransmissao.PadLeft(2, '0')}";
             }
