@@ -74,6 +74,7 @@ namespace BoletoNetCore
                 reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0087, 013, 0, "0", '0');
                 reg.Adicionar(TTiposDadoEDI.ediAlphaAliEsquerda_____, 0100, 008, 0, string.Empty, ' ');
                 reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0108, 001, 0, boleto.Carteira, '0');
+
                 if (string.IsNullOrEmpty(boleto.CodigoMovimentoRetorno))
                     reg.Adicionar(TTiposDadoEDI.ediNumericoSemSeparador_, 0109, 002, 0, boleto.CodigoMotivoOcorrencia, '0');
                 else
