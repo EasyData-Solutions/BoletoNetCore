@@ -12,12 +12,21 @@ namespace BoletoNetCore
         ///
         public virtual void CompletarHeaderRetornoCNAB400(string registro)
         {
-            this.Beneficiario.ContaBancaria = new ContaBancaria();
-            this.Beneficiario.ContaBancaria.Agencia = registro.Substring(17, this.TamanhoAgencia);
+            if (this.Beneficiario.ContaBancaria == null)
+            {
+                this.Beneficiario.ContaBancaria = new ContaBancaria();
+            }
+            if (string.IsNullOrEmpty(this.Beneficiario?.ContaBancaria?.Agencia))
+            {
+                this.Beneficiario.ContaBancaria.Agencia = registro.Substring(17, this.TamanhoAgencia);
+            }
 
-            var conta = registro.Substring(20, this.TamanhoConta).Trim();
-            this.Beneficiario.ContaBancaria.Conta = conta.Substring(0, conta.Length - 1);
-            this.Beneficiario.ContaBancaria.DigitoConta = conta.Substring(conta.Length - 1, 1);
+            if (string.IsNullOrEmpty(this.Beneficiario?.ContaBancaria?.Conta))
+            {
+                var conta = registro.Substring(20, this.TamanhoConta).Trim();
+                this.Beneficiario.ContaBancaria.Conta = conta.Substring(0, conta.Length - 1);
+                this.Beneficiario.ContaBancaria.DigitoConta = conta.Substring(conta.Length - 1, 1);
+            }
 
             // 01 - cpf / 02 - cnpj
             if (registro.Substring(1, 2) == "01")
