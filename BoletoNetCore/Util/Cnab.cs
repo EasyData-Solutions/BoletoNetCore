@@ -79,6 +79,48 @@ namespace BoletoNetCore
                     return "Estorno de Baixa / Liquidação";
                 case "45":
                     return "Alteração de Dados";
+                case "46":
+                    return "Instrução para cancelar protesto confirmada";
+                case "47":
+                    return "Instrução para protesto para fins falimentares confirmada";
+                case "48":
+                    return "Confirmação de instrução de transferência de carteira/modalidade de cobrança";
+                case "49":
+                    return "Alteração de contrato de cobrança";
+                case "50":
+                    return "Título pago com cheque pendente de liquidação";
+                case "51":
+                    return "Título DDA reconhecido pelo Pagador";
+                case "52":
+                    return "Título DDA não reconhecido pelo Pagador";
+                case "53":
+                    return "Título DDA recusado pela CIP";
+                case "54":
+                    return "Confirmação da Instrução de Baixa de Título Negativado sem Protesto";
+                case "55":
+                    return "Confirmação de Pedido de Dispensa de Multa";
+                case "56":
+                    return "Confirmação do Pedido de Cobrança de Multa";
+                case "57":
+                    return "Confirmação do Pedido de Alteração de Cobrança de Juros";
+                case "58":
+                    return "Confirmação do Pedido de Alteração do Valor/Data de Desconto";
+                case "59":
+                    return "Confirmação do Pedido de Alteração do Beneficiário do Título";
+                case "60":
+                    return "Confirmação do Pedido de Dispensa de Juros de Mora";
+                case "61":
+                    return "Confirmação de Alteração do Valor Nominal do Título";
+                case "63":
+                    return "Título Sustado Judicialmente";
+                case "64":
+                    return "Confirmação de alteração do valor mínimo/percentual";
+                case "65":
+                    return "Confirmação de alteração do valor máximo/percentual";
+                case "93":
+                    return "Intenção de pagamento";
+                case "94":
+                    return "Cancelamento de intenção de pagamento";
                 default:
                     return "";
             }
