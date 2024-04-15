@@ -182,7 +182,37 @@ namespace BoletoNetCore
 
                 //Carteira (no arquivo retorno, vem com 1 caracter. Ajustamos para 2 caracteres, como no manual do Bradesco.
                 boleto.Carteira = registro.Substring(107, 1).PadLeft(2, '0');
-                boleto.TipoCarteira = (TipoCarteira)Convert.ToInt32(registro.Substring(107, 1));
+                int tipo_carteira = 0;
+                if(tipo_carteira == 0)
+                {
+                    switch (boleto.Carteira)
+                    {
+                        case "0":
+                        case "A":
+                        case "B":
+                        case "C":
+                        case "F":
+                        case "G":
+                        case "H":
+                        case "I":
+                        case "J":
+                            tipo_carteira = 1;
+                            break;
+                        case "D":
+                            tipo_carteira = 2;
+                            break;
+                        case "E":
+                            tipo_carteira = 3;
+                            break;
+                        case "K":
+                            tipo_carteira = 6;
+                            break;
+                        default:
+                            int.TryParse(boleto.Carteira, out tipo_carteira);
+                            break;
+                    }
+                }
+                boleto.TipoCarteira = (TipoCarteira)tipo_carteira;
 
                 //Identificação do Título no Banco
                 boleto.NossoNumero = registro.Substring(62, 7); //Sem o DV
