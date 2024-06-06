@@ -76,25 +76,29 @@ namespace BoletoNetCore
             // Segmento P (Obrigatório)
             var detalhe = GerarDetalheSegmentoPRemessaCNAB240(boleto, ref registro);
 
-            // Segmento Q (Obrigatório)
-            detalhe += Environment.NewLine;
-            detalhe += GerarDetalheSegmentoQRemessaCNAB240(boleto, ref registro);
-
-            // Segmento R (Opcional)
-            var strline = GerarDetalheSegmentoRRemessaCNAB240(boleto, ref registro);
-            if (!IsNullOrWhiteSpace(strline))
+            if (boleto.CodigoMovimentoRetorno == "01")
             {
+                // Segmento Q (Obrigatório)
                 detalhe += Environment.NewLine;
-                detalhe += strline;
+                detalhe += GerarDetalheSegmentoQRemessaCNAB240(boleto, ref registro);
+
+                // Segmento R (Opcional)
+                var strline = GerarDetalheSegmentoRRemessaCNAB240(boleto, ref registro);
+                if (!IsNullOrWhiteSpace(strline))
+                {
+                    detalhe += Environment.NewLine;
+                    detalhe += strline;
+                }
+
+                // Segmento S (Opcional)
+                strline = GerarDetalheSegmentoSRemessaCNAB240(boleto, ref registro);
+                if (!IsNullOrWhiteSpace(strline))
+                {
+                    detalhe += Environment.NewLine;
+                    detalhe += strline;
+                }
             }
 
-            // Segmento S (Opcional)
-            strline = GerarDetalheSegmentoSRemessaCNAB240(boleto, ref registro);
-            if (!IsNullOrWhiteSpace(strline))
-            {
-                detalhe += Environment.NewLine;
-                detalhe += strline;
-            }
             return detalhe;
         }
 
