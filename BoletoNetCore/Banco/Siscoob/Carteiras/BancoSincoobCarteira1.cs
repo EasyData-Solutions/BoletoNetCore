@@ -41,7 +41,7 @@ namespace BoletoNetCore
             if (parcelas == 0)
                 parcelas = 1;
 
-            return $"{boleto.Carteira}{contaBancaria.Agencia}{boleto.VariacaoCarteira}{beneficiario.Codigo}{beneficiario.CodigoDV}{boleto.NossoNumero}{boleto.NossoNumeroDV}{parcelas.ToString()}";
+            return $"{boleto.Carteira}{contaBancaria.Agencia}{boleto.VariacaoCarteira}{beneficiario.Codigo}{beneficiario.CodigoDV}{boleto.NossoNumero}{boleto.NossoNumeroDV}{parcelas.ToString("000")}";
         }
     }
 }
