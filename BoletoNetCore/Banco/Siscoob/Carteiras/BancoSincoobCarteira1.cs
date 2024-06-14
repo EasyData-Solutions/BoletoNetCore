@@ -36,7 +36,12 @@ namespace BoletoNetCore
         {
             var beneficiario = boleto.Banco.Beneficiario;
             var contaBancaria = beneficiario.ContaBancaria;
-            return $"{boleto.Carteira}{contaBancaria.Agencia}{boleto.VariacaoCarteira}{beneficiario.Codigo}{beneficiario.CodigoDV}{boleto.NossoNumero}{boleto.NossoNumeroDV}001";
+            int parcelas = 1;
+            int.TryParse(boleto.ParcelaInformativo, out parcelas);
+            if (parcelas == 0)
+                parcelas = 1;
+
+            return $"{boleto.Carteira}{contaBancaria.Agencia}{boleto.VariacaoCarteira}{beneficiario.Codigo}{beneficiario.CodigoDV}{boleto.NossoNumero}{boleto.NossoNumeroDV}{parcelas.ToString()}";
         }
     }
 }
