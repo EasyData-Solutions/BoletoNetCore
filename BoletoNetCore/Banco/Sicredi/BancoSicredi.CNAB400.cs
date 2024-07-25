@@ -237,6 +237,14 @@ namespace BoletoNetCore
         {
             try
             {
+                //this.Beneficiario = new Beneficiario();
+                //this.Beneficiario.ContaBancaria = new ContaBancaria();
+
+                //this.Beneficiario.ContaBancaria.Agencia = registro.Substring(26, 4);
+                //this.Beneficiario.ContaBancaria.Conta = registro.Substring(32, 5);
+                //this.Beneficiario.ContaBancaria.DigitoConta = registro.Substring(37, 1);
+                //this.Beneficiario.Nome = registro.Substring(46, 30).Trim();
+
                 // Identificação do Título no Banco
                 boleto.NossoNumero = registro.Substring(47, 8);
                 boleto.NossoNumeroDV = registro.Substring(55, 1);
@@ -264,9 +272,9 @@ namespace BoletoNetCore
                 boleto.ValorDesconto = Convert.ToDecimal(registro.Substring(240, 13)) / 100;
                 boleto.ValorPago = Convert.ToDecimal(registro.Substring(253, 13)) / 100;
                 boleto.ValorJurosDia = Convert.ToDecimal(registro.Substring(266, 13)) / 100;
-                boleto.ValorOutrosCreditos = Convert.ToDecimal(registro.Substring(279, 13)) / 100;
+                boleto.ValorMulta = Convert.ToDecimal(registro.Substring(279, 13)) / 100;
 
-                boleto.ValorPago += boleto.ValorJurosDia;
+                //boleto.ValorPago += boleto.ValorJurosDia;
 
                 // Data do Crédito
                 boleto.DataCredito = Utils.ToDateTime(Utils.ToInt32(registro.Substring(328, 8)).ToString("####-##-##"));
@@ -382,13 +390,6 @@ namespace BoletoNetCore
                 if (registro.Substring(0, 9) != "02RETORNO")
                     throw new Exception("O arquivo não é do tipo \"02RETORNO\"");
 
-                this.Beneficiario = new Beneficiario();
-                this.Beneficiario.ContaBancaria = new ContaBancaria();
-
-                this.Beneficiario.ContaBancaria.Agencia = registro.Substring(26, 4);
-                this.Beneficiario.ContaBancaria.Conta = registro.Substring(32, 5);
-                this.Beneficiario.ContaBancaria.DigitoConta = registro.Substring(37, 1);
-                this.Beneficiario.Nome = registro.Substring(46, 30).Trim();
             }
             catch (Exception ex)
             {
