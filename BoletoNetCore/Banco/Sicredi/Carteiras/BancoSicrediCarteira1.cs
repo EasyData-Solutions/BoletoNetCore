@@ -27,17 +27,16 @@ namespace BoletoNetCore
 
         public void FormataNossoNumero(Boleto boleto)
         {
-            if (boleto.NossoNumeroFormatado.Length != 11)
+            if (boleto.NossoNumero.Length != 8)
             {
                 var DataDocumento = boleto.DataEmissao.ToString("yy");
 
                 var nossoNumero = boleto.NossoNumero;
-
                 boleto.NossoNumero = string.Format("{0}2{1}", DataDocumento, nossoNumero.PadLeft(5, '0'));
 
-                boleto.NossoNumeroDV = Mod11(Sequencial(boleto)).ToString();
                 //boleto.NossoNumero = string.Concat(boleto.NossoNumero, Mod11(Sequencial(boleto)));
             }
+            boleto.NossoNumeroDV = Mod11(Sequencial(boleto)).ToString();
 
             boleto.NossoNumeroFormatado = string.Format("{0}/{1}-{2}", boleto.NossoNumero.Substring(0, 2), boleto.NossoNumero.Substring(2, 6), boleto.NossoNumeroDV);
         }
