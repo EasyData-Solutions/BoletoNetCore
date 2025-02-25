@@ -124,3 +124,5 @@
 		boleto.DataCredito
 	Registro Retorno
         boleto.RegistroArquivoRetorno (Nesta linha deve conter os registros de retorno. Nos layouts com mais de um registro para o mesmo boleto, utilizar quebra de linha.)
+
+		teste
